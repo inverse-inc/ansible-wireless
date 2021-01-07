@@ -1,0 +1,26 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Hostapd {{ item.name }}  IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
+Conflicts=shutdown.target hostapd.service{% for lname in hostapd__configs %}
+{% if item.name != lname.name %} hostapd_{{ lname.name }}.service{% endif %}
+{% endfor %}
+
+After=network.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Type=forking
+PIDFile=/run/hostapd.pid
+ExecStart=/usr/sbin/hostapd /etc/hostapd/hostapd_{{ item.name }}.conf -P /run/hostapd.pid -B
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=basic.target shutdown.target
+
+
+
+

@@ -1,0 +1,23 @@
+---
+# hostapd deploy services
+- name: Install hostapd service script
+  template:
+    src: hostapd.service.j2
+    dest: '/etc/systemd/system/hostapd_{{ item.name }}.service'
+    owner: root
+    group: root
+    mode: 0644
+
+- debug:
+     var: hostapd_version
+
+- name: Reload systemctl
+  systemd:
+    daemon_reload: yes  
+
+- name: Remove mask
+  systemd:
+    name: 'hostapd_{{ item.name }}'
+    enabled: yes
+    masked:  no
+    state: stopped

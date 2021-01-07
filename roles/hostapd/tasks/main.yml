@@ -1,0 +1,27 @@
+---
+
+- debug:
+    var: ansible_distribution
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+# tasks file for hostapd
+- name: Ensure hostapd installed
+  include_tasks: install.yml
+
+- name: Ensure kernel module installed
+  include_tasks: kernel.yml
+
+- name: Deploy hostapd configs
+  include_tasks: deploy_configs.yml
+  loop: '{{ hostapd__configs }}'
+
+- name: Deploy hostapd services
+  include_tasks: deploy_services.yml
+  loop: '{{ hostapd__configs }}'
+
+- name: Remove mask for hostapd default service
+  systemd:
+    name: 'hostapd'
+    enabled: yes
+    masked:  no
+    state: started
