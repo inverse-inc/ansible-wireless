@@ -3,10 +3,6 @@
 # Debian install
 - name: (Debian) Install hostapd and dependencies
   block:
-    - name: Gather package facts
-      package_facts:
-        manager: apt
-
     - name: (Debian) Install kmod if not installed
       apt:
         name:
