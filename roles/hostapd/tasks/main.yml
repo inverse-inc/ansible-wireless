@@ -1,9 +1,4 @@
 ---
-
-- debug:
-    var: ansible_distribution
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
 # tasks file for hostapd
 - name: Ensure hostapd installed
   include_tasks: install.yml
