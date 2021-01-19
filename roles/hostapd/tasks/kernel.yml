@@ -1,14 +1,6 @@
 ---
 # hostapd kernel for wireless
 # Kernel Module
-- name: (Debian) install linux linux-headers
-  apt:
-    name: "linux-image-extra-{{ ansible_kernel }}"
-    state: latest
-    update_cache: '{{ hostapd__pkg_update_cache }}'
-  ignore_errors: True
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
 - name: Add the mac80211_hwsim module
   # check grep HWSIM /boot/config-$(uname -r) to check if installed in the kernel
   community.general.modprobe:
