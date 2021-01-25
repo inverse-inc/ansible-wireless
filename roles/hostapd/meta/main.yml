@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: "Inverse inc <info@inverse.ca>"
-  description: "Configure hostapd on Cumulus Linux"
+  description: "Configure hostapd on Linux"
   company: "Inverse inc"
   license: "GPL-3.0-only"
   min_ansible_version: 2.8
@@ -13,6 +13,5 @@ galaxy_info:
 
   galaxy_tags:
     - hostapd
-    - cumulus
 
 dependencies: []
