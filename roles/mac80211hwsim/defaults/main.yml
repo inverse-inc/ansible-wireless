@@ -1,0 +1,2 @@
+---
+mac80211hwsim__params: "radios=3"

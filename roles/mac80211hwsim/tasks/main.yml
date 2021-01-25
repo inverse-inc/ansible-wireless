@@ -1,0 +1,17 @@
+---
+# Kernel Module
+- name: Remove the mac80211_hwsim module with wrong params
+  community.general.modprobe:
+    name: mac80211_hwsim
+    state: absent
+
+- name: Add the mac80211_hwsim module
+  community.general.modprobe:
+    name: mac80211_hwsim
+    state: present
+    params: "{{ mac80211hwsim__params }}"
+
+- name: Add the mac80211_hwsim module at boot
+  copy:
+    src: mac80211_hwsim.conf
+    dest: /etc/modules-load.d/mac80211_hwsim.conf

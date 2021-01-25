@@ -3,9 +3,6 @@
 - name: Ensure hostapd installed
   include_tasks: install.yml
 
-- name: Ensure kernel module installed
-  include_tasks: kernel.yml
-
 - name: Deploy hostapd configs
   include_tasks: deploy_configs.yml
   loop: '{{ hostapd__configs }}'
