@@ -2,8 +2,8 @@
 # Debian install
 - name: (Debian) install wpa-supplicant on Debian
   apt:
-    name: '{{ wpasupplicant__pkg_name_d }}'
-    state: latest
+    name: '{{ wpasupplicant__pkg_name_d }}={{ wpasupplicant__version_d }}'
+    state: present
     update_cache: '{{ wpasupplicant__pkg_update_cache }}'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
