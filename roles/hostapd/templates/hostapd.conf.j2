@@ -93,6 +93,9 @@ radius_das_require_message_authenticator={{ item.hostapd__radius_das_require_mes
 {% if item.hostapd__ssid is defined %}
 ssid={{ item.hostapd__ssid }}
 {% endif %}
+{% if item.hostapd__vlan_file is defined %}
+vlan_file={{ item.hostapd__vlan_file }}
+{% endif %}
 {% if item.hostapd__voice_interfaces is defined %}
 voice_interfaces={{ item.hostapd__voice_interfaces }}
 {% endif %}
