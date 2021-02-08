@@ -45,4 +45,5 @@ hostapd__configs:
     hostapd__wpa: ''
     hostapd__wpa_key_mgmt: ''
     hostapd__wpa_pairwise: ''
-
+    #hostapd__vlan_file_content: ''
+    #hostapd__vlan_file: ''

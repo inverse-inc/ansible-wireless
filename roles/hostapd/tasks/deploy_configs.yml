@@ -6,8 +6,16 @@
     dest: '/etc/hostapd/hostapd_{{ item.name }}.conf'
     backup: yes
 
+- name: Add vlan_file for hostapd
+  template:
+    src: hostapd.vlan.j2
+    dest: '{{ item.hostapd__vlan_file }}'
+    backup: yes
+  when: item.hostapd__vlan_file is defined
+
 - name: Add Default Config for hostapd
   copy:
     src: hostapd_default.conf
     dest: '/etc/hostapd/hostapd.conf'
     backup: yes
+
