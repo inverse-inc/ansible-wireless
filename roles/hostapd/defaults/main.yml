@@ -2,7 +2,8 @@
 # hostapd service
 hostapd__state: started
 hostapd__enabled: True
-hostapd__version: '2:2.7+git20190128+0c1e29f-6+deb10u2'
+hostapd__version_d: '2:2.7+git20190128+0c1e29f-6+deb10u2'
+
 hostapd__pkg_update_cache: '{{ pkg_update_cache | default("true") }}'
 
 # defaults file for hostapd
