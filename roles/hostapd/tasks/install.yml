@@ -4,8 +4,8 @@
 - name: (Debian) Install hostapd if not installed
   apt:
     name:
-      - hostapd
-    state: latest
+      - 'hostapd={{ hostapd__version }}'
+    state: present
     update_cache: '{{ hostapd__pkg_update_cache }}'
   notify: restart hostapd
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
