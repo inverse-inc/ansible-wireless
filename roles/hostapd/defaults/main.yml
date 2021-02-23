@@ -7,30 +7,31 @@ hostapd__version_d: '2:2.7+git20190128+0c1e29f-6+deb10u2'
 hostapd__pkg_update_cache: '{{ pkg_update_cache | default("true") }}'
 
 # defaults file for hostapd
+# look at https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf
 hostapd__configs:
   - name: default_values
     hostapd__acct_server_addr: ''
     hostapd__acct_server_port: ''
     hostapd__acct_server_shared_secret: ''
-    hostapd__auth_algs: '3'
+    hostapd__auth_algs: 3
     hostapd__auth_server_addr: '{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}'
     hostapd__auth_server_port: '1812'
     hostapd__auth_server_shared_secret: 'anHardSharedSecret'
-    hostapd__channel: '1'
+    hostapd__channel: 1
     hostapd__ctrl_interface: '/var/run/hostapd'
-    hostapd__ctrl_interface_group: '0'
+    hostapd__ctrl_interface_group: 0
     hostapd__driver: 'nl80211'
-    hostapd__dynamic_vlan: ''
+    hostapd__dynamic_vlan: 0                # values are 0, 1 and 2
     hostapd__eap_reauth_period: ''
     hostapd__eap_send_identity: ''
     hostapd__eap_server: ''
     hostapd__hw_mode: 'g'
     hostapd__ieee8021x: ''
     hostapd__interface: 'wlan0'
-    hostapd__logger_syslog: '1'
+    hostapd__logger_syslog: 1
     hostapd__mab_interfaces: ''
     hostapd__mab_activation_delay: ''
-    hostapd__macaddr_acl: '2'
+    hostapd__macaddr_acl: 2
     hostapd__max_num_sta: ''
     hostapd__nas_identifier: ''
     hostapd__own_ip_addr: '{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}'
@@ -42,9 +43,9 @@ hostapd__configs:
     hostapd__radius_das_require_event_timestamp: ''
     hostapd__radius_das_require_message_authenticator: ''
     hostapd__ssid: ''
+    hostapd__vlan_file_content: ''          # linked with hostapd__dynamic_vlan and hostapd__vlan_file
+    hostapd__vlan_file: '/etc/hostapd.vlan' # linked with hostapd__dynamic_vlan 
     hostapd__voice_interfaces: ''
     hostapd__wpa: ''
     hostapd__wpa_key_mgmt: ''
     hostapd__wpa_pairwise: ''
-    #hostapd__vlan_file_content: ''
-    #hostapd__vlan_file: ''
