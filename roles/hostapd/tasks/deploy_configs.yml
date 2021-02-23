@@ -24,6 +24,3 @@
   when:
     - item.hostapd__vlan_file is defined
     - item.hostapd__vlan_file | length > 0
-    - item.hostapd__dynamic_vlan is defined
-    - item.hostapd__dynamic_vlan > 0
-

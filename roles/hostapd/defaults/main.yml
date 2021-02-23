@@ -39,7 +39,7 @@ hostapd__configs:
     hostapd__radius_das_require_message_authenticator: 1
     hostapd__ssid: 'default_ssid'
     hostapd__vlan_file_content: ''          # linked with hostapd__dynamic_vlan and hostapd__vlan_file
-    hostapd__vlan_file: ''                  # linked with hostapd__dynamic_vlan 
+    hostapd__vlan_file: '/etc/hostapd.vlan' # linked with hostapd__dynamic_vlan 
     hostapd__wpa: 2
     hostapd__wpa_key_mgmt: 'WPA-PSK WPA-EAP'
     hostapd__wpa_pairwise: 'TKIP CCMP'
