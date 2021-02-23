@@ -13,9 +13,3 @@
     backup: yes
   when: item.hostapd__vlan_file is defined
 
-- name: Add Default Config for hostapd
-  copy:
-    src: hostapd_default.conf
-    dest: '/etc/hostapd/hostapd.conf'
-    backup: yes
-
