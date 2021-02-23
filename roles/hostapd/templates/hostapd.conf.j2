@@ -35,9 +35,6 @@ dynamic_vlan={{ item.hostapd__dynamic_vlan }}
 {% if item.hostapd__eap_reauth_period is defined %}
 eap_reauth_period={{ item.hostapd__eap_reauth_period }}
 {% endif %}
-{% if item.hostapd__eap_send_identity is defined %}
-eap_send_identity={{ item.hostapd__eap_send_identity }}
-{% endif %}
 {% if item.hostapd__eap_server is defined %}
 eap_server={{ item.hostapd__eap_server }}
 {% endif %}
@@ -51,12 +48,6 @@ interface={{ item.hostapd__interface | default("")}}
 {% if item.hostapd__logger_syslog is defined %}
 logger_syslog={{ item.hostapd__logger_syslog }}
 {% endif %}
-{% if item.hostapd__mab_interfaces is defined %}
-mab_interfaces={{ item.hostapd__mab_interfaces }}
-{% endif %}
-{% if item.hostapd__mab_activation_delay is defined %}
-mab_activation_delay={{ item.hostapd__mab_activation_delay }}
-{% endif %}
 {% if item.hostapd__macaddr_acl is defined %}
 macaddr_acl={{ item.hostapd__macaddr_acl }}
 {% endif %}
@@ -68,12 +59,6 @@ nas_identifier={{ item.hostapd__nas_identifier }}
 {% endif %}
 {% if item.hostapd__own_ip_addr is defined %}
 own_ip_addr={{ item.hostapd__own_ip_addr }}
-{% endif %}
-{% if item.hostapd__parking_vlan_interfaces is defined %}
-parking_vlan_interfaces={{ item.hostapd__parking_vlan_interfaces }}
-{% endif %}
-{% if item.hostapd__parking_vlan_id is defined %}
-parking_vlan_id={{ item.hostapd__parking_vlan_id }}
 {% endif %}
 {% if item.hostapd__radius_das_port is defined %}
 radius_das_port={{ item.hostapd__radius_das_port }}
@@ -96,9 +81,6 @@ ssid={{ item.hostapd__ssid }}
 {% if item.hostapd__vlan_file is defined %}
 vlan_file={{ item.hostapd__vlan_file }}
 {% endif %}
-{% if item.hostapd__voice_interfaces is defined %}
-voice_interfaces={{ item.hostapd__voice_interfaces }}
-{% endif %}
 {% if item.hostapd__wpa is defined %}
 wpa={{ item.hostapd__wpa }}
 {% endif %}
@@ -107,4 +89,10 @@ wpa_key_mgmt={{ item.hostapd__wpa_key_mgmt }}
 {% endif %}
 {% if item.hostapd__wpa_pairwise is defined %}
 wpa_pairwise={{ item.hostapd__wpa_pairwise }}
+{% endif %}
+{% if item.hostapd__wpa_psk is defined %}
+wpa_psk={{ item.hostapd__wpa_psk }}
+{% endif %}
+{% if item.hostapd__wpa_passphrase is defined %}
+wpa_passphrase={{ item.hostapd__wpa_passphrase }}
 {% endif %}
