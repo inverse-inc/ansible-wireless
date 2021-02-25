@@ -3,6 +3,12 @@
 - name: Ensure hostapd installed
   include_tasks: install.yml
 
+- name: Deploy default Config for hostapd
+  copy:
+    src: hostapd_default.conf
+    dest: '/etc/hostapd/hostapd.conf'
+    backup: yes
+
 - name: Deploy hostapd configs
   include_tasks: deploy_configs.yml
   loop: '{{ hostapd__configs }}'

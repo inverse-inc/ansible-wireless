@@ -6,8 +6,22 @@
     dest: '/etc/hostapd/hostapd_{{ item.name }}.conf'
     backup: yes
 
-- name: Add Default Config for hostapd
-  copy:
-    src: hostapd_default.conf
-    dest: '/etc/hostapd/hostapd.conf'
+- name: Show vlan hostapd configuration if vlan used
+  debug:
+    verbosity: 1
+    msg: |
+         The current hostapd configuration allow vlan with the following configuration:
+         dynamic vlan     : {{ item.hostapd__dynamic_vlan }}
+         vlan file        : {{ item.hostapd__vlan_file }}
+  when:
+    - item.hostapd__dynamic_vlan is defined
+    - item.hostapd__dynamic_vlan > 0
+
+- name: Add vlan_file for hostapd
+  template:
+    src: hostapd.vlan.j2
+    dest: '{{ item.hostapd__vlan_file }}'
     backup: yes
+  when:
+    - item.hostapd__vlan_file is defined
+    - item.hostapd__vlan_file | length > 0

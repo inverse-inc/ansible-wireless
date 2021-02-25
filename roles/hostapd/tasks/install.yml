@@ -1,27 +1,13 @@
 ---
 # hostapd installation
 # Debian install
-- name: (Debian) Install hostapd and dependencies
-  block:
-    - name: (Debian) Install kmod if not installed
-      apt:
-        name:
-          - kmod
-        state: latest
-        update_cache: '{{ hostapd__pkg_update_cache }}'
-
-    - name: (Debian) Install hostapd if not installed
-      apt:
-        name:
-          - hostapd
-        state: latest
-        update_cache: '{{ hostapd__pkg_update_cache }}'
-      notify: restart hostapd
-
-  rescue:
-    - name: Print when errors
-      ansible.builtin.debug:
-        msg: 'I caught an error'
+- name: (Debian) Install hostapd if not installed
+  apt:
+    name:
+      - 'hostapd={{ hostapd__version_d }}'
+    state: present
+    update_cache: '{{ hostapd__pkg_update_cache }}'
+  notify: restart hostapd
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Redhat install
@@ -31,7 +17,6 @@
       yum:
         name:
           - epel-release
-          - kmod
         state: latest
         update_cache: '{{ hostapd__pkg_update_cache }}'
 
