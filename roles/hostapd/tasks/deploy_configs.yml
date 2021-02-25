@@ -8,6 +8,7 @@
 
 - name: Show vlan hostapd configuration if vlan used
   debug:
+    verbosity: 1
     msg: |
          The current hostapd configuration allow vlan with the following configuration:
          dynamic vlan     : {{ item.hostapd__dynamic_vlan }}
