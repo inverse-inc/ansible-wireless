@@ -4,7 +4,7 @@
 - name: (Debian) Install hostapd if not installed
   apt:
     name:
-      - 'hostapd={{ hostapd__version_d }}'
+      - 'hostapd'
     state: present
     update_cache: '{{ hostapd__pkg_update_cache }}'
   notify: restart hostapd
